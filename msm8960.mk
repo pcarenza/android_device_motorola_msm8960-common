@@ -91,6 +91,7 @@ PRODUCT_COPY_FILES += $(LOCAL_PATH)/modules/bluetooth/bt_vendor.conf:system/etc/
 PRODUCT_PACKAGES += \
     copybit.msm8960 \
     gralloc.msm8960 \
+    camera.msm8960 \
     hwcomposer.msm8960 \
     power.msm8960
 
@@ -176,7 +177,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	persist.sys.ui.hw=true \
 	debug.composition.type=dyn \
 	persist.hwc.mdpcomp.enable=true \
-	debug.mdpcomp.maxlayer=2 \
 	debug.mdpcomp.logs=0 \
 	debug.enabletr=0 \
 	ro.hwui.text_cache_width=2048
