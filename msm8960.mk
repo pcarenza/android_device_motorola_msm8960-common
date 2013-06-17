@@ -68,6 +68,7 @@ PRODUCT_PACKAGES += \
 	WCNSS_qcom_wlan_nv.bin \
 	tcpdump \
     Torch \
+    DevicePerformanceSettingsHelper \
     libxml2
 
 # Lights
@@ -90,6 +91,7 @@ PRODUCT_COPY_FILES += $(LOCAL_PATH)/modules/bluetooth/bt_vendor.conf:system/etc/
 PRODUCT_PACKAGES += \
     copybit.msm8960 \
     gralloc.msm8960 \
+    camera.msm8960 \
     hwcomposer.msm8960 \
     power.msm8960
 
@@ -174,6 +176,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	debug.sf.hw=1 \
 	persist.sys.ui.hw=true \
 	debug.composition.type=dyn \
+	persist.hwc.mdpcomp.enable=true \
+	debug.mdpcomp.logs=0 \
 	debug.enabletr=0 \
 	ro.hwui.text_cache_width=2048
 
@@ -235,7 +239,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
-    lpa.decode=false \
+    lpa.decode=true \
     lpa.use-stagefright=true \
     media.stagefright.enable-player=true \
     media.stagefright.enable-http=true \
