@@ -181,9 +181,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.egl.hw=1 \
     debug.sf.hw=1 \
     persist.sys.ui.hw=true \
-    debug.composition.type=dyn \
+    debug.composition.type=gpu \
     persist.hwc.mdpcomp.enable=true \
     debug.mdpcomp.logs=0 \
+    debug.mdpcomp.maxlayer=2 \
     debug.enabletr=0 \
     ro.hwui.text_cache_width=2048
 
@@ -261,7 +262,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 #misc
 PRODUCT_PROPERTY_OVERRIDES += \
-<<<<<<< HEAD
 	persist.fuse_sdcard=true \
 	ro.usb.mtp=0x2e32 \
 	ro.usb.mtp_adb=0x2e33 \
@@ -270,14 +270,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.hdmi.enable=true \
         otaupdater.sdcard.os=sdcard \
 	otaupdater.sdcard.recovery=sdcard
-=======
-    persist.fuse_sdcard=true \
-    ro.usb.mtp=0x2e32 \
-    ro.usb.mtp_adb=0x2e33 \
-    ro.usb.ptp=0x2e30 \
-    ro.usb.ptp_adb=0x2e31 \
-    ro.hdmi.enable=true
->>>>>>> e12390f1561d67d8bbce22eeb382a5a1b7525100
 
 #wifi
 PRODUCT_PROPERTY_OVERRIDES += \
