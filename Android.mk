@@ -19,7 +19,7 @@
 # to only building on ARM if they include assembly. Individual makefiles
 # are responsible for having their own logic, for fine-grained control.
 
-ifneq ($(filter xt925 xt926 mb886,$(TARGET_DEVICE)),)
+ifneq ($(filter xenonhd_xt925 xenonhd_xt926 xenonhd_mb886,$(TARGET_DEVICE)),)
 
 LOCAL_PATH := $(call my-dir)
 
