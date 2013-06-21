@@ -109,7 +109,6 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
-
 TARGET_PROVIDES_LIBLIGHT := true
 
 # Graphics

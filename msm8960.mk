@@ -65,7 +65,7 @@ PRODUCT_PACKAGES += \
 
 # Misc
 PRODUCT_PACKAGES += \
-	GNexusParts \
+	DeviceSettings \
 	WCNSS_qcom_wlan_nv.bin \
 	tcpdump \
     Torch \
