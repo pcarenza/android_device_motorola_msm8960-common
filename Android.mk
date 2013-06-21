@@ -19,11 +19,11 @@
 # to only building on ARM if they include assembly. Individual makefiles
 # are responsible for having their own logic, for fine-grained control.
 
+ifneq ($(filter xt925 xt926 mb886,$(TARGET_DEVICE)),)
+
 LOCAL_PATH := $(call my-dir)
 
-ifeq ($(BOARD_VENDOR),motorola-msm8960)
-ifeq ($(TARGET_BOARD_PLATFORM),msm8960)
 include $(call all-makefiles-under,$(LOCAL_PATH))
 include $(call all-subdir-makefiles,$(LOCAL_PATH))
-endif
+
 endif
