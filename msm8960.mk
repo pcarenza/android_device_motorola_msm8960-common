@@ -182,10 +182,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.egl.hw=1 \
     debug.sf.hw=1 \
     persist.sys.ui.hw=true \
-    debug.composition.type=gpu \
+    debug.composition.type=dyn \
     persist.hwc.mdpcomp.enable=true \
     debug.mdpcomp.logs=0 \
-    debug.mdpcomp.maxlayer=2 \
     debug.enabletr=0 \
     ro.hwui.text_cache_width=2048
 
@@ -248,18 +247,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
-    lpa.decode=true \
-    lpa.use-stagefright=true \
-    media.stagefright.enable-player=true \
-    media.stagefright.enable-http=true \
-    media.stagefright.enable-aac=true \
-    media.stagefright.enable-qcp=true \
-    media.stagefright.enable-fma2dp=true \
-    media.stagefright.enable-scan=true \
-    mmp.enable.3g2=true \
+    lpa.decode=false \
+    tunnel.decode=true \
+    tunnel.audiovideo.decode=true \
     af.resampler.quality=255 \
-    ro.opengles.version=131072 \
-    mpq.audio.decode=true
+    ro.opengles.version=131072
 
 #misc
 PRODUCT_PROPERTY_OVERRIDES += \
