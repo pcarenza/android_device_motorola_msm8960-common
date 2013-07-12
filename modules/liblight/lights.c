@@ -29,6 +29,7 @@
 
 #include <sys/ioctl.h>
 #include <sys/types.h>
+#include <sys/system_properties.h>
 
 #include <hardware/lights.h>
 
@@ -214,6 +215,17 @@ handle_speaker_battery_locked(struct light_device_t* dev)
 }
 
 static int
+set_light_battery(struct light_device_t* dev,
+        struct light_state_t const* state)
+{
+    pthread_mutex_lock(&g_lock);
+    g_battery = *state;
+    handle_speaker_battery_locked(dev);
+    pthread_mutex_unlock(&g_lock);
+    return 0;
+}
+
+static int
 set_light_notifications(struct light_device_t* dev,
         struct light_state_t const* state)
 {
@@ -257,15 +269,27 @@ close_lights(struct light_device_t *dev)
  * module methods
  */
 
+int android_property_get(const char *key, char *value, const char *default_value)
+{
+    int iReturn = __system_property_get(key, value);
+    if (!iReturn) strcpy(value, default_value);
+    return iReturn;
+}
+
+
 /** Open a new instance of a lights device using name */
 static int open_lights(const struct hw_module_t* module, char const* name,
         struct hw_device_t** device)
 {
+    char value[92];
+    android_property_get("ro.battery.led",value,"false");
     int (*set_light)(struct light_device_t* dev,
             struct light_state_t const* state);
 
     if (0 == strcmp(LIGHT_ID_BACKLIGHT, name))
         set_light = set_light_backlight;
+    else if (0 == strcmp(LIGHT_ID_BATTERY, name) && 0 == strcmp(value, "true"))
+        set_light = set_light_battery;
     else if (0 == strcmp(LIGHT_ID_NOTIFICATIONS, name))
         set_light = set_light_notifications;
     else if (0 == strcmp(LIGHT_ID_ATTENTION, name))
