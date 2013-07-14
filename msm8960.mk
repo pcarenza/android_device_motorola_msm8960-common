@@ -250,8 +250,17 @@ PRODUCT_PROPERTY_OVERRIDES += \
     lpa.decode=false \
     tunnel.decode=true \
     tunnel.audiovideo.decode=true \
+    lpa.use-stagefright=true \
+    media.stagefright.enable-player=true \
+    media.stagefright.enable-http=true \
+    media.stagefright.enable-aac=true \
+    media.stagefright.enable-qcp=true \
+    media.stagefright.enable-fma2dp=true \
+    media.stagefright.enable-scan=true \
+    mmp.enable.3g2=true \
     af.resampler.quality=255 \
-    ro.opengles.version=131072
+    ro.opengles.version=131072 \
+    mpq.audio.decode=true
 
 #misc
 PRODUCT_PROPERTY_OVERRIDES += \
