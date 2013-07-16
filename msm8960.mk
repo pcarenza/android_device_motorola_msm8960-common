@@ -264,7 +264,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
         otaupdater.sdcard.os=sdcard \
 	otaupdater.sdcard.recovery=sdcard \
         
-
 #wifi
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.qc.sub.rstrtlvl=3 \
