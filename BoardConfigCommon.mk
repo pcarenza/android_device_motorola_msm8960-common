@@ -116,7 +116,7 @@ TARGET_USES_ION := true
 BOARD_EGL_CFG := $(LOCAL_PATH)/config/egl.cfg
 
 # Telephony
-BOARD_RIL_CLASS := ../../../device/motorola/msm8960-common/ril/MotorolaQualcommRIL.java
+BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/modules/ril/MotorolaQualcommRIL.java
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
@@ -169,4 +169,3 @@ TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
 #BOARD_HAS_NO_REAL_SDCARD := true
 RECOVERY_SDCARD_ON_DATA := true
 TARGET_RECOVERY_INITRC := $(LOCAL_PATH)/init.recovery.rc
-TARGET_USERIMAGES_USE_EXT4 := true
