@@ -38,7 +38,7 @@ TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_ARCH_VARIANT_CPU := cortex-a9
-TARGET_CPU_VARIANT := cortex-a9
+TARGET_CPU_VARIANT := krait
 TARGET_CPU_SMP := true
 COMMON_GLOBAL_CFLAGS += -D__ARM_USE_PLD -D__ARM_CACHE_LINE_SIZE=64
 TARGET_GLOBAL_CFLAGS += -mfpu=neon-vfpv4 -mfloat-abi=softfp
@@ -80,12 +80,7 @@ BOARD_HAS_LARGE_FILESYSTEM := true
 # Inline kernel building
 TARGET_KERNEL_SOURCE := kernel/motorola/msm8960-common
 TARGET_KERNEL_CONFIG := msm8960_mmi_defconfig
-#TARGET_PREBUILT_KERNEL := device/motorola/xt926/kernel
-
-#BOARD_KERNEL_CMDLINE := console=/dev/null androidboot.hardware=qcom user_debug=31 loglevel=1 msm_rtb.filter=0x3F kgsl.mmutype=gpummu zcache
-ifeq ($(HAVE_SELINUX),true)
 TARGET_KERNEL_SELINUX_CONFIG := msm8960_mmi_selinux_defconfig
-endif
 BOARD_KERNEL_CMDLINE := console=/dev/null androidboot.hardware=qcom user_debug=31 loglevel=1 zcache
 BOARD_KERNEL_BASE := 0x80200000
 BOARD_KERNEL_PAGESIZE := 2048
@@ -108,15 +103,24 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_USES_QCOM_HARDWARE := true
 TARGET_PROVIDES_LIBLIGHT := true
 
+TARGET_HAS_OLD_QCOM_ION := true
+
+TARGET_QCOM_MEDIA_VARIANT := moto
+
+# QCOM enhanced A/V
+TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
+
 # Graphics
-TARGET_QCOM_DISPLAY_VARIANT := caf
+TARGET_QCOM_DISPLAY_VARIANT := moto
 USE_OPENGL_RENDERER := true
 TARGET_USES_C2D_COMPOSITION := true
 TARGET_USES_ION := true
 BOARD_EGL_CFG := $(LOCAL_PATH)/config/egl.cfg
 
 # Telephony
+BOARD_PROVIDES_LIBRIL := true
 BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/modules/ril/MotorolaQualcommRIL.java
+BOARD_RIL_NO_CELLINFOLIST:=true
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
@@ -149,15 +153,16 @@ TARGET_BOOTANIMATION_PRELOAD := true
 TARGET_BOOTANIMATION_TEXTURE_CACHE := false
 
 # assert
-TARGET_OTA_ASSERT_DEVICE := xt925,xt926,xt907,vanquish_u,vanquish,scorpion_mini,mb886,qinara,asanti,asanti_c,xt897
+TARGET_OTA_ASSERT_DEVICE := xt925,xt926,xt907,vanquish_u,vanquish,scorpion_mini,mb886,qinara,asanti,asanti_c,xt897,xt897c
 
 # Recovery
 #TARGET_NO_RECOVERY := true
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBA_8888"
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 BOARD_SUPPRESS_EMMC_WIPE := true
-TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/recovery.fstab
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
 TARGET_USERIMAGES_USE_EXT4 := true
+RECOVERY_FSTAB_VERSION := 2
 
 #TWRP
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
@@ -172,7 +177,6 @@ TARGET_RECOVERY_INITRC := $(LOCAL_PATH)/init.recovery.rc
 TARGET_USERIMAGES_USE_EXT4 := true
 
 # SELinux
-ifeq ($(HAVE_SELINUX),true)
 BOARD_SEPOLICY_DIRS += \
 	device/motorola/msm8960-common/sepolicy
 
@@ -205,6 +209,7 @@ BOARD_SEPOLICY_UNION += \
 	radio.te \
 	rild.te \
 	rmt.te \
+	sdcardd.te \
 	sensors.te \
 	surfaceflinger.te \
 	system.te \
@@ -214,4 +219,3 @@ BOARD_SEPOLICY_UNION += \
 	vold.te \
 	wpa_supplicant.te \
 	zygote.te
-endif
