@@ -66,6 +66,10 @@ PRODUCT_PACKAGES += \
 
 # Misc
 PRODUCT_PACKAGES += \
+	DeviceSettings \
+	WCNSS_qcom_wlan_nv.bin \
+	tcpdump \
+    Torch \
     DevicePerformanceSettingsHelper \
     libxml2 \
     tcpdump \
@@ -251,13 +255,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 #misc
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.fuse_sdcard=true \
-    ro.usb.mtp=0x2e32 \
-    ro.usb.mtp_adb=0x2e33 \
-    ro.usb.ptp=0x2e30 \
-    ro.usb.ptp_adb=0x2e31 \
-    ro.hdmi.enable=true
-
+	persist.fuse_sdcard=true \
+	ro.usb.mtp=0x2e32 \
+	ro.usb.mtp_adb=0x2e33 \
+	ro.usb.ptp=0x2e30 \
+	ro.usb.ptp_adb=0x2e31 \
+	ro.hdmi.enable=true \
+        otaupdater.sdcard.os=sdcard \
+	otaupdater.sdcard.recovery=sdcard \
 #wifi
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.qc.sub.rstrtlvl=3 \
@@ -279,6 +284,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Wifi
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
-    wifi.supplicant_scan_interval=30
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
