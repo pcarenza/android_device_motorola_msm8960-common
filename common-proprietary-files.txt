@@ -42,8 +42,10 @@ lib/hw/sensors.msm8960.so
 lib/hw/sensors.oem.so
 
 #libs
+lib/libacdbloader.so
 lib/libAKM.so
 lib/libaudcal.so
+lib/libaudioalsa.so
 lib/libbabysit.so
 lib/libconfigdb.so
 lib/libcsd-client.so
